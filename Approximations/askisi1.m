@@ -1,18 +1,26 @@
-% Program askisi3
+% Program askisi1
 clear; clc;
 
 % Input section
-k = input('give k: ');
+n = input('give n: ');
+x = input('give x: ');
 
-I = 0.0;
-disp(I);
-
-% Backward loop from k-1 down to 2 with a step of -1
-for n = (k - 1):-1:2
-    I = (1.0 - I) / n;
-    disp(I);
+% First calculation 
+s = 1;
+term = 1;
+for i = 2:n
+    term = term * (-x / (i - 1));
+    s = s + term;
 end
 
-% Calculating and printing the absolute error E
-E = abs(I - 1.0 / exp(1.0));
-fprintf('E= %e\n', E);
+fprintf('to s einai : %f to e^(-x) einai : %f\n', s, exp(-x));
+
+% Second calculation 
+s = 1;
+term = 1;
+for i = 2:n
+    term = term * (x / (i - 1));
+    s = s + term;
+end
+
+fprintf('to 1/s einai : %f\n', 1 / s);
